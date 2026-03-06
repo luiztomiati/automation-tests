@@ -11,16 +11,22 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 playwright install
+```
+## Executar Teste
 
+``` bash
 pytest
 pytest -k nome
+``` 
 
-conftest.py
-test_arquivo.py
-requirements.txt
-screenshot/
+## Estrutura
 
-Observações
+- conftest.py
+- test_arquivo.py
+- requirements.txt
+- screenshot/
+
+## Observações
 
 Prints são capturados apenas em falhas.
-```
+
