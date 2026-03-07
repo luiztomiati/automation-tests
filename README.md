@@ -12,12 +12,13 @@ source venv/bin/activate
 pip install -r requirements.txt
 playwright install
 ```
+
 ## Executar Teste
 
-``` bash
+```bash
 pytest
 pytest -k nome
-``` 
+```
 
 ## Estrutura
 
@@ -29,4 +30,3 @@ pytest -k nome
 ## Observações
 
 Prints são capturados apenas em falhas.
-
