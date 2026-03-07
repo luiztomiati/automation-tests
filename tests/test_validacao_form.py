@@ -2,6 +2,18 @@ import re, pytest, time
 from playwright.sync_api import Page,expect
 
 @pytest.mark.parametrize("url_fixture", ["site_url", "certificado_url"])
+def test_nome_invalido(page: Page, request, url_fixture):
+   url = request.getfixturevalue(url_fixture)
+   page.goto(url)
+   camp_tel = page.locator('input[name="pessoa.nome"]')
+   camp_tel.press_sequentially("123456", delay=100)
+   page.click('body') 
+   mensagem = page.locator('span[name="validationMessage"]').filter(has_text=re.compile(r"\w"))
+   quantidade = mensagem.count()
+   assert quantidade > 0, f"ERRO: Não foi exibido mensagem de erro quando colocado um nome com apenas numeros"
+
+
+@pytest.mark.parametrize("url_fixture", ["site_url", "certificado_url"])
 def test_telefone_invalido(page: Page, request, url_fixture):
    url = request.getfixturevalue(url_fixture)
    page.goto(url)
